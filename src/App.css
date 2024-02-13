@@ -1,0 +1,21 @@
+.default {
+  width: 900px;
+  height: 300px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.numbers {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3px;
+}
+
+.numbers span {
+  font-size: 15px;
+  line-height: 16px;
+}

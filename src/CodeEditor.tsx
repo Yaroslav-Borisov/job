@@ -56,6 +56,7 @@ export const CodeEditor = ({ deviceType = 'desktop', hint }: CodeEditorProps): J
   };
 
   const openFullScreenMode = (event: KeyboardEvent) => {
+    // Нужно сделать так, чтобы значение фокуса менялось согласно стейту
     console.log('Текужее значение фокуса: ' + focus);
   };
 
@@ -63,20 +64,6 @@ export const CodeEditor = ({ deviceType = 'desktop', hint }: CodeEditorProps): J
     const open = (event) => openFullScreenMode(event);
     document.addEventListener('keydown', open);
   }, []);
-
-  // const [pendingMessages, setPendingMessages] = React.useState([]);
-
-  // React.useEffect(function () {
-  //   ref.current.addEventListener('send-message', onSendMessage);
-  //   return function () {
-  //     ref.current.removeEventListener('send-message', onSendMessage);
-  //   };
-  // }, []);
-
-  // function onSendMessage(event) {
-  //   const newMessage = event.message;
-  //   setPendingMessages((prevState) => [...prevState, newMessage]);
-  // }
 
   return (
     <>

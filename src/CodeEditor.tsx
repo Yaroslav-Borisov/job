@@ -55,36 +55,28 @@ export const CodeEditor = ({ deviceType = 'desktop', hint }: CodeEditorProps): J
     });
   };
 
-  const openFullScreenMode = useCallback((event: KeyboardEvent) => {
+  const openFullScreenMode = (event: KeyboardEvent) => {
     console.log('Текужее значение фокуса: ' + focus);
-
-    if (event.code === 'F11') {
-      event.preventDefault();
-      event.stopPropagation();
-      setFullScreenMode(true);
-    }
-  }, []);
-
-  const closeFullScreenMode = (event: KeyboardEvent) => {
-    if (event.code === 'Escape') {
-      event.preventDefault();
-      event.stopPropagation();
-      setFullScreenMode(false);
-    }
   };
 
   useEffect(() => {
-    document.addEventListener('keydown', openFullScreenMode);
+    const open = (event) => openFullScreenMode(event);
+    document.addEventListener('keydown', open);
   }, []);
 
-  useEffect(() => {
-    // document.addEventListener('keydown', close);
+  // const [pendingMessages, setPendingMessages] = React.useState([]);
 
-    return () => {
-      document.removeEventListener('keydown', (event) => openFullScreenMode(event, focus));
-      document.removeEventListener('keydown', (event) => closeFullScreenMode(event));
-    };
-  }, []);
+  // React.useEffect(function () {
+  //   ref.current.addEventListener('send-message', onSendMessage);
+  //   return function () {
+  //     ref.current.removeEventListener('send-message', onSendMessage);
+  //   };
+  // }, []);
+
+  // function onSendMessage(event) {
+  //   const newMessage = event.message;
+  //   setPendingMessages((prevState) => [...prevState, newMessage]);
+  // }
 
   return (
     <>

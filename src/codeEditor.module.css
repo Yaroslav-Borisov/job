@@ -1,0 +1,29 @@
+.editorContainer {
+    display: flex;
+    box-sizing: border-box;
+    height: 314px;
+}
+
+.editorContainer__fullScreen {
+    z-index: 999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.editorHint {
+    display: none;
+}
+
+.editorHint__desktop {
+    margin: 6px 0 0 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: left;
+    color: black;
+}

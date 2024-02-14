@@ -1,5 +1,5 @@
 import { Editor } from '@monaco-editor/react';
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 
 import styles from './codeEditor.module.css';
 
@@ -55,15 +55,20 @@ export const CodeEditor = ({ deviceType = 'desktop', hint }: CodeEditorProps): J
     });
   };
 
-  const openFullScreenMode = (event: KeyboardEvent) => {
-    // Нужно сделать так, чтобы значение фокуса менялось согласно стейту
-    console.log('Текужее значение фокуса: ' + focus);
+  const openFullScreenMode = (event, current) => {
+    if (event.code === 'Escape' && current) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('esc');
+    }
   };
 
+  const open = (event) => openFullScreenMode(event, focus);
+
   useEffect(() => {
-    const open = (event) => openFullScreenMode(event);
     document.addEventListener('keydown', open);
-  }, []);
+    return () => document.removeEventListener('keydown', open);
+  }, [focus]);
 
   return (
     <>
